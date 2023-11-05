@@ -36,6 +36,14 @@ if uploaded_file is not None:
     st.write('---')
     st.header('**Pandas Profiling Report**')
     st_profile_report(pr)
+
+    download_button = st.download_button(
+        label="Download Report",
+        data=pr.to_file("pandas_profiling_report.html").getvalue(),
+        key="download_report",
+        on_click=None,
+    )
+    
 else:
     st.info('Awaiting for CSV file to be uploaded.')
     if st.button('Press to use Example Dataset'):
